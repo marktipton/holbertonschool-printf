@@ -19,6 +19,7 @@ typedef struct spec
 
 int _printf(const char *format, ...);
 int (*get_spec_func(char *s))(int);
+int _putchar(char c);
 
 
 #endif
