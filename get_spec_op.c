@@ -1,25 +1,70 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
-<<<<<<< HEAD
+/**
+ *get_spec_func - selects function to perform
+ *
+ * @s: specifier passed as argument to _printf
+ *Return: operation or NULL
+ */
+
 int spec_char(va_list)
 {
-	
+                        c = va_arg(args, int);
+                        _putchar(c);
+                        count++;	
 }
+/**
+ *get_spec_func - selects function to perform
+ *
+ * @s: specifier passed as argument to _printf
+ *Return: operation or NULL
+ */
+
 int spec_string(va_list)
 {
+                  char *s = va_arg(args, char *);
+                        for (j = 0; s[j]; j++)
+                        {
+                                _putchar(s[j]);
+                                count++;
+                        }
 
 }
+/**
+ *spec_dec - selects function to perform
+ *
+ * @s: specifier passed as argument to _printf
+ *Return: operation or NULL
+ */
+
 int spec_dec(va_list)
 {
+	int d;
+       
+	d = va_arg(args, int);
+	_putchar(d + '0');
+
+	count++;
 
 }
+/**
+ *spec_int - selects function to perform
+ *
+ * @s: specifier passed as argument to _printf
+ *Return: operation or NULL
+ */
+
 int spec_int(va_list)
 {
+	int i; 
+	int count;
+
+	i = va_arg(args, int);
+	_putchar(i + '0');
+	count++;
 
 }
-=======
->>>>>>> ffd68e624072b2d3e8bba0f63e6c59f401ee81b7
 /**
  *get_spec_func - selects function to perform
  *
@@ -28,16 +73,9 @@ int spec_int(va_list)
  *Return: operation or NULL
  */
 
-<<<<<<< HEAD
-int (*get_spec_func(char *s))(va_list)
-{
-	spec_t spec[] = 
-	{
-=======
 int (*get_spec_func(char *s))(char)
 {
 	spec_t spec[] = {
->>>>>>> ffd68e624072b2d3e8bba0f63e6c59f401ee81b7
 		{"c", spec_char},
 		{"s", spec_string},
 		{"d", spec_dec},
