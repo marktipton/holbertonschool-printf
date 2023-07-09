@@ -28,14 +28,18 @@ int spec_char(va_list)
 
 int spec_string(va_list)
 {
-	char *s = va_arg(args, char *);
-	int string_count;
+	char *s;
+	int string_count, j;
 
+	s = va_arg(args, char *);
+	if (*s == '\0')
+		return (0);
+	string_count = 0;
 	for (j = 0; s[j]; j++)
 	{
-		_putchar(s[j]);
-		string_count++;
+		string_count += _putchar(s[j]);
 	}
+	return (string_count);
 
 }
 /**
