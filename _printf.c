@@ -9,13 +9,15 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-while (format[k] != '\0' && format != NULL)
-{
-	if (format[k] == '%')
+	if (format == NULL)
+		return (-1);
+	while (format[k] != '\0' && format != NULL)
 	{
-		k++;
-		for (k = 0; format[k]; k++) 
+		if (format[k] == '%')
 		{
+			k++;
+			for (k = 0; format[k]; k++) 
+			{
 				if (format[k] == '%') 
 					_putchar('%'); 
 				else if (format[k] == 'c') 
@@ -34,8 +36,8 @@ while (format[k] != '\0' && format != NULL)
 				{
 					_putchar(format[k]);
 				}
-		}
-	}	
+			}
+		}	
 	va_end(args);
 }
 	return (count);
