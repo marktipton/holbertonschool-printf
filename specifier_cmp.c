@@ -24,13 +24,13 @@ int specifier_cmp(const char *format, va_list args)
 				count += _putchar('%');
 				k++;
 			}
-			if (*get_spec_func((char) format[k], args) == NULL)
+			if (get_spec_func(format[k], args) == 0)
 			{
 				count += _putchar('%');
 				count += _putchar(format[k]);
 			}
 			else
-				count += *get_spec_func((char) format[k], args); 
+				count += get_spec_func(format[k], args); 
                 }
                 else
                         count += _putchar(format[k]);

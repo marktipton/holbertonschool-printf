@@ -19,7 +19,7 @@ typedef struct spec
 
 int _printf(const char *format, ...);
 int specifier_cmp(const char *format, va_list args);
-int (*get_spec_func(char *s))(char *format, va_list args);
+int get_spec_func(char format, va_list args);
 int _putchar(char c);
 int spec_char(va_list args);
 int spec_string(va_list args);
