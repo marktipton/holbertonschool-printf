@@ -12,13 +12,13 @@ int specifier_cmp(const char *format, va_list args)
 	int count, k;
 
 	k = 0, count = 0;
- 	while (format[k] != '\0' && format != NULL)
+	while (format[k] != '\0' && format != NULL)
 	{
 		if (format[k] == '%')
 		{
 			k++;
-                        if (format[k] == '\0')
-                                continue;
+			if (format[k] == '\0')
+				continue;
 			if (format[k] == '%')
 			{
 				count += _putchar('%');
@@ -30,11 +30,11 @@ int specifier_cmp(const char *format, va_list args)
 				count += _putchar(format[k]);
 			}
 			else
-				count += get_spec_func(format[k], args); 
-                }
-                else
-                        count += _putchar(format[k]);
-                k++;
+				count += get_spec_func(format[k], args);
+		}
+		else
+			count += _putchar(format[k]);
+		k++;
 	}
 	return (count);
 }

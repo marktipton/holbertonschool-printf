@@ -2,7 +2,7 @@
 ## Synopsis
 - This is a simple implementation of printf function that formats and prints data.
 
---- 
+---
 ## The definition of printf & it's function
 -   The format string is composed
        of zero or more directives: ordinary characters (not %), which
@@ -28,5 +28,5 @@
 - %r: Prints a reversed string
 - %R: Prints the Rot13 interpretation of a string
 ---
-# Compilation 
+# Compilation
 #### gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
