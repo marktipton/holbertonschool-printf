@@ -98,5 +98,5 @@ int (*get_spec_func(char *s))(va_list)
 	{
 		i++;
 	}
-	return (spec[i].f)(args);
+	return (spec[i].f(args));
 }
