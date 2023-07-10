@@ -82,7 +82,7 @@ int spec_dec(va_list args)
  *Return: NULL if no match and the return of the specifier function if match
  */
 
-int (*get_spec_func(char *s))(char *format, va_list args)
+int get_spec_func(char format, va_list args)
 {
 	spec_t spec[] = {
 		{"c", spec_char},
@@ -95,15 +95,13 @@ int (*get_spec_func(char *s))(char *format, va_list args)
 
 	count = 0;
 	i = 0;
-	while (spec[i].spec != NULL && *(spec[i].spec) != *s)
+	while (spec[i].spec)
 	{
-		i++;
+		if (*spec[i].spec == format)
+		{
+			count = spec[i].f(args);
+			return (count);
+		}
 	}
-	if (spec[i].spec == NULL)
-		return (NULL);
-	else
-	{
-		count = spec[i].f(args);
-		return (count);
-	}
+	return (0);
 }
