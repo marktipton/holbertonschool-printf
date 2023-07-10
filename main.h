@@ -14,7 +14,7 @@
 typedef struct spec
 {
 	char *spec;
-	char (*f)(va_list);
+	int (*f)(va_list);
 } spec_t;
 
 int _printf(const char *format, ...);
@@ -23,5 +23,4 @@ int _putchar(char c);
 int spec_char(va_list);
 int spec_string(va_list);
 int spec_dec(va_list);
-int spec_int(va_list);
 #endif
