@@ -3,7 +3,7 @@
  *specifier_cmp - compares format characters to specifiers
  *
  * @format: characters for _printf to print
- * @va_list: variable arguments passed to _printf function
+ * @args: variable arguments passed to _printf function
  *Return: number of characters printed
  */
 
@@ -12,7 +12,7 @@ int specifier_cmp(const char *format, va_list args)
 	int count, k;
 
 	k = 0, count = 0;
-	while (format[k] != '\0' && format != NULL)
+	while (format && format[k])
 	{
 		if (format[k] == '%')
 		{
@@ -24,7 +24,7 @@ int specifier_cmp(const char *format, va_list args)
 				count += _putchar('%');
 				k++;
 			}
-			if (get_spec_func(format[k], args) == 0)
+			if (spec_check_func(format[k]) == 0)
 			{
 				count += _putchar('%');
 				count += _putchar(format[k]);
