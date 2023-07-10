@@ -8,7 +8,7 @@
  *Return: operation or NULL
  */
 
-int spec_char(va_list)
+int spec_char(va_list args)
 {
 	char c;
 	
@@ -26,7 +26,7 @@ int spec_char(va_list)
  *Return: operation or NULL
  */
 
-int spec_string(va_list)
+int spec_string(va_list args)
 {
 	char *s;
 	int string_count, j;
@@ -49,7 +49,7 @@ int spec_string(va_list)
  *Return: operation or NULL
  */
 
-int spec_dec(va_list)
+int spec_dec(va_list args)
 {
 	int d, count, i;
 	char buf[11];
@@ -83,7 +83,7 @@ int spec_dec(va_list)
  *Return: operation or NULL
  */
 
-int (*get_spec_func(char *s))(va_list)
+int (*get_spec_func(char *s))(va_list args)
 {
 	spec_t spec[] = {
 		{"c", spec_char},
