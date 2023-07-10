@@ -2,28 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 /**
- *spec_char - prints character
+ * spec_char - prints character
  *
  * @args: variable arguments passed to _printf function
- *Return: 1
+ * Return: 1
  */
 
 int spec_char(va_list args)
 {
-	int c;
-
-	c = va_arg(args, int);
-	if (c == '\0')
-		return (0);
+	int c = va_arg(args, int);
 
 	_putchar(c);
 	return (1);
 }
 /**
- *spec_string - prints string
+ * spec_string - prints string
  *
  * @args: variable arguments passed to _printf function
- *Return: count of characters in string
+ * Return: count of characters in string
  */
 
 int spec_string(va_list args)
@@ -43,10 +39,10 @@ int spec_string(va_list args)
 
 }
 /**
- *spec_dec - prints integer
+ * spec_dec - prints integer
  *
  * @args: variable arguments passed to _printf function
- *Return: count of digits
+ * Return: count of digits
  */
 
 int spec_dec(va_list args)
@@ -75,11 +71,11 @@ int spec_dec(va_list args)
 	return (_putchar(buf[count]));
 }
 /**
- *get_spec_func - selects function to perform
+ * get_spec_func - selects function to perform
  *
- *@format: specifier passed as argument to _printf
- *@args: variable arguments passed to _printf function
- *Return: NULL if no match and the return of the specifier function if match
+ * @format: specifier passed as argument to _printf
+ * @args: variable arguments passed to _printf function
+ * Return: NULL if no match and the return of the specifier function if match
  */
 
 int get_spec_func(char format, va_list args)
@@ -89,7 +85,7 @@ int get_spec_func(char format, va_list args)
 		{"s", spec_string},
 		{"d", spec_dec},
 		{"i", spec_dec},
-		{NULL, NULL}
+		{NULL, NULL},
 	};
 	int i, count;
 
@@ -100,8 +96,28 @@ int get_spec_func(char format, va_list args)
 		if (*spec[i].spec == format)
 		{
 			count = spec[i].f(args);
-			return (count);
 		}
+		i++;
+	}
+	return (count);
+}
+/**
+ * spec_check_func - checks for specific specs
+ *
+ *
+ * 
+ * Return: 1 if specifier matches and 0 if not
+ */
+
+int spec_check_func(char format)
+{
+	char spec[] = {'c', 's', 'd', 'i'};
+	int i = 0;
+
+	while (spec[i])
+	{
+		if (spec[i] == format)
+		return (1);	
 	}
 	return (0);
 }
