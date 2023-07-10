@@ -2,43 +2,50 @@
 
 int _printf(const char *format, ...) 
 {
-	int k, count = 0;
-	int j = 0;
-	char c;
-	int i, count = 0;
+	int k, j, count, find;
 	va_list args;
+	typedef struct spec_t;
 
-	va_start(args, format);
 	if (format == NULL)
 		return (-1);
+	va_start(args, format);
+	count = 0;
+	k = 0;
 	while (format[k] != '\0' && format != NULL)
 	{
 		if (format[k] == '%')
 		{
 			k++;
-			for (k = 0; format[k]; k++) 
+			if (format[k] == '\0')
+				continue;
+			j = 0;
+			find = 0;	
+			for (; j < 5; j++) 
 			{
-				if (format[k] == '%') 
-					_putchar('%'); 
-				else if (format[k] == 'c') 
+				if (format[k] == spec[j].spec)
 				{
-				}
-				else if (format[k] == 's') 
-				{
-				}
-				else if (format[k] == 'd')	
-				{
-				}
-				else if (format[k] == 'i')
-				{
-				}
-				else
-				{
-					_putchar(format[k]);
+					count += spec[j].f(args);
+					find = 1;
+					k++;
+					break;
 				}
 			}
-		}	
+			if (find != 1)
+			{
+				if (format[k] == '%')
+				{
+					count += _putchar('%');
+					k++;
+				}
+				else
+					count += _putchar(format[k]);
+			}
+		}
+		else
+			count += _putchar(format[k]);
+		k++;
+	}
 	va_end(args);
-}
+	
 	return (count);
 }
