@@ -51,13 +51,12 @@ int spec_string(va_list args)
 
 int spec_dec(va_list args)
 {
-	int d, count, i;
+	int d;
+	int count, i;
 	char buf[11];
 
 	d = va_arg(args, int);
 	count = 0;
-	if (d == NULL)
-		return (0);
 
 	if (d < 0)
 	{
@@ -83,7 +82,7 @@ int spec_dec(va_list args)
  *Return: operation or NULL
  */
 
-int (*get_spec_func(char *s))(va_list args)
+int (*get_spec_func(char *s))(va_list)
 {
 	spec_t spec[] = {
 		{"c", spec_char},
@@ -99,5 +98,5 @@ int (*get_spec_func(char *s))(va_list args)
 	{
 		i++;
 	}
-	return (spec[i].f);
+	return (spec[i].f)(args);
 }
