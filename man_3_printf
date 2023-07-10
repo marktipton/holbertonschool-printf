@@ -23,13 +23,13 @@ The following conversion specifiers are not handled by _printf():
 
 ---
 
-### **Return Value**: 
+### **Return Value**:
 
 Upon successful return, these functions return the number of characters printed (including the null byte used to end output to strings as well as a new line).
 
 ___
 
 #### **Authors:**
-Mark Tipton  https://github.com/marktipton 
+Mark Tipton  https://github.com/marktipton
 
 Kier McAlister  https://github.com/kier-ious

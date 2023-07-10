@@ -4,25 +4,25 @@
 /**
  *spec_char - prints character
  *
- * @va_list: variable arguments passed to _printf function
+ * @args: variable arguments passed to _printf function
  *Return: 1
  */
 
 int spec_char(va_list args)
 {
 	char c;
-	
+
 	c = va_arg(args, int);
-        if (c == '\0')
-		return (0);		
+	if (c == '\0')
+		return (0);
 
 	_putchar(c);
-	return (1);	
+	return (1);
 }
 /**
  *spec_string - prints string
  *
- * @va_list: variable arguments passed to _printf function
+ * @args: variable arguments passed to _printf function
  *Return: count of characters in string
  */
 
@@ -45,7 +45,7 @@ int spec_string(va_list args)
 /**
  *spec_dec - prints integer
  *
- * @va_list: variable arguments passed to _printf function
+ * @args: variable arguments passed to _printf function
  *Return: count of digits
  */
 
@@ -72,13 +72,13 @@ int spec_dec(va_list args)
 		buf[--count] = (d / i) % 10 + '0';
 		i = i / 10;
 	}
-	return _putchar(buf[count]);
+	return (_putchar(buf[count]));
 }
 /**
  *get_spec_func - selects function to perform
  *
- *@s: specifier passed as argument to _printf
- *@va_list: variable arguments passed to _printf function
+ *@format: specifier passed as argument to _printf
+ *@args: variable arguments passed to _printf function
  *Return: NULL if no match and the return of the specifier function if match
  */
 
