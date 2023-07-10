@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 /**
- *get_spec_func - selects function to perform
+ *spec_char - prints character
  *
  * @va_list: variable arguments passed to _printf function
- *Return: operation or NULL
+ *Return: 1
  */
 
 int spec_char(va_list args)
@@ -20,10 +20,10 @@ int spec_char(va_list args)
 	return (1);	
 }
 /**
- *get_spec_func - selects function to perform
+ *spec_string - prints string
  *
  * @va_list: variable arguments passed to _printf function
- *Return: operation or NULL
+ *Return: count of characters in string
  */
 
 int spec_string(va_list args)
@@ -43,10 +43,10 @@ int spec_string(va_list args)
 
 }
 /**
- *spec_dec - selects function to perform
+ *spec_dec - prints integer
  *
  * @va_list: variable arguments passed to _printf function
- *Return: operation or NULL
+ *Return: count of digits
  */
 
 int spec_dec(va_list args)
@@ -79,7 +79,7 @@ int spec_dec(va_list args)
  *
  *@s: specifier passed as argument to _printf
  *@va_list: variable arguments passed to _printf function
- *Return: operation or NULL
+ *Return: NULL if no match and the return of the specifier function if match
  */
 
 int (*get_spec_func(char *s))(va_list)
@@ -98,5 +98,8 @@ int (*get_spec_func(char *s))(va_list)
 	{
 		i++;
 	}
-	return (spec[i].f(args));
+	if (spec[i].spec == NULL)
+		return (NULL);
+	else
+		return (spec[i].f(args));
 }
