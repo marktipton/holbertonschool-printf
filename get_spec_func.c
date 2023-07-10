@@ -10,7 +10,7 @@
 
 int spec_char(va_list args)
 {
-	char c;
+	int c;
 
 	c = va_arg(args, int);
 	if (c == '\0')
