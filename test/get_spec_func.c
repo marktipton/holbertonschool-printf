@@ -104,8 +104,7 @@ int get_spec_func(char format, va_list args)
 /**
  * spec_check_func - checks for specific specs
  *
- *
- * 
+ * @format: checks format specifiers
  * Return: 1 if specifier matches and 0 if not
  */
 
@@ -117,7 +116,8 @@ int spec_check_func(char format)
 	while (spec[i])
 	{
 		if (spec[i] == format)
-		return (1);	
+		return (1);
+		i++;
 	}
 	return (0);
 }
