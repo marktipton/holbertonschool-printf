@@ -14,14 +14,14 @@
 typedef struct spec
 {
 	char *spec;
-	char (*f)(va_list);
+	char (*f)(va_list args);
 } spec_t;
 
 int _printf(const char *format, ...);
-int (*get_spec_func(char *s))(va_list);
+int specifier_cmp(const char *format, va_list args)
+int (*get_spec_func(char *s))(va_list args);
 int _putchar(char c);
-int spec_char(va_list);
-int spec_string(va_list);
-int spec_dec(va_list);
-int spec_int(va_list);
+int spec_char(va_list args);
+int spec_string(va_list args);
+int spec_dec(va_list args);
 #endif
