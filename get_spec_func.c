@@ -28,15 +28,23 @@ int spec_string(va_list args)
 	int string_count, j;
 
 	s = va_arg(args, char *);
-	if (*s == '\0')
-		return (0);
+	if (s != NULL)
+	{
 	string_count = 0;
 	for (j = 0; s[j]; j++)
 	{
 		string_count += _putchar(s[j]);
 	}
 	return (string_count);
+	}
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
 
+	return (6);
 }
 /**
  * spec_dec - prints integer
