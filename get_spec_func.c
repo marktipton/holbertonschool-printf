@@ -59,7 +59,7 @@ int spec_dec(va_list args)
 	int count, i;
 
 	d = va_arg(args, int);
-	count = 0;
+	count = 0, i = 0;
 
 	if (d < 0)
 	{
@@ -69,11 +69,13 @@ int spec_dec(va_list args)
 	while (d / i >= 10)
 	{
 		i = i * 10;
+		i++;
 	}
 	while (i > 0)
 	{
 		count = (d / i) % 10 + '0';
 		i = i / 10;
+		i++;
 	}
 	return (_putchar(count));
 }
