@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -11,8 +12,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("There is %d bytes in %d KB\n", 1024, 1);
-	len2 = printf("There is %d bytes in %d KB\n", 1024, 1);
+	len = _printf("%d", INT_MIN);
+	len2 = printf("%d", INT_MIN);
 	fflush(stdout);
 	if (len != len2)
 	{
