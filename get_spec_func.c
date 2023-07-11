@@ -57,7 +57,6 @@ int spec_dec(va_list args)
 {
 	int d;
 	int count, i;
-	char buf[11];
 
 	d = va_arg(args, int);
 	count = 0;
@@ -73,10 +72,10 @@ int spec_dec(va_list args)
 	}
 	while (i > 0)
 	{
-		buf[--count] = (d / i) % 10 + '0';
+		count = (d / i) % 10 + '0';
 		i = i / 10;
 	}
-	return (_putchar(buf[count]));
+	return (_putchar(count));
 }
 /**
  * get_spec_func - selects function to perform
