@@ -73,6 +73,8 @@ int spec_dec(va_list args)
 	while (i > 0)
 	{
 		count += _putchar(((d / i) % 10) + '0');
+		if (d == 0)
+			return (count);
 		i = i / 10;
 	}
 	return (count);
