@@ -18,13 +18,12 @@ int specifier_cmp(const char *format, va_list args)
 		{
 			k++;
 			if (format[k] == '\0')
-				continue;
+				return (-1);
 			if (format[k] == '%')
 			{
 				count += _putchar('%');
-				k++;
 			}
-			if (spec_check_func(format[k]) == 0)
+			else if (spec_check_func(format[k]) == 0)
 			{
 				count += _putchar('%');
 				count += _putchar(format[k]);

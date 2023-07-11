@@ -18,7 +18,7 @@ int specifier_cmp(const char *format, va_list args)
 		{
 			k++;
 			if (format[k] == '\0')
-				continue;
+				return (-1);
 			if (format[k] == '%')
 			{
 				count += _putchar('%');
