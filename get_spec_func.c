@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 /**
  * spec_char - prints character
  *
@@ -61,6 +62,15 @@ int spec_dec(va_list args)
 	d = va_arg(args, int);
 	count = 0, i = 10;
 
+	if (d == INT_MIN)
+	{
+		_putchar('-');
+		_putchar('2');
+
+	d = d % 2000000000;
+		d = -d;
+		count += 2;
+	}
 	if (d < 0)
 	{
 		_putchar('-');
