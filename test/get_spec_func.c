@@ -64,6 +64,7 @@ int spec_dec(va_list args)
 	if (d < 0)
 	{
 		_putchar('-');
+		count++;
 		d = -d;
 	}
 	while (d / i >= 10)
