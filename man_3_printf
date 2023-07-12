@@ -1,35 +1,48 @@
-# **_printf   Library Function Man**
----
+.\" Manpage for _printf.
+.\" Contact 6653@holberstudents.com to correct errors or typos.
+.TH man _printf "08 July 2023" "1.0" "man_3_printf"
+.SH NAME
+-printf - Prints string.
+.SH SYNOPSIS
+.RE
+-int _printf(const char *format, ...);
 
-## **Synopsis**
-- int (*get_spec_func(char *s))(va_list);
-- int spec_char(va_list args);
-- int spec_string(va_list args);
-- int spec_dec(va_list args);
----
+-int specifier_cmp(const char *format, va_list args);
 
-## **Description**
+-int get_spec_func(char format, va_list args);
+
+-int spec_check_func(char format);
+
+-int _putchar(char c);
+
+-int spec_char(va_list args);
+
+-int spec_string(va_list args);
+
+-int spec_dec(va_list args);
+.RS
+.SH DESCRIPTION
 _printf() is a simple printf function that can be used to print formatted output to stdout. The format string is a string that contains special formatting codes that tell _printf() how to interpret the arguments that are passed to it.
+.SH SEE ALSO
+.RE
+-%c	Print a character
 
----
+-%s	Print a string
 
-## **Specifier's included and their descriptions**
-- %c	Print a character
-- %s	Print a string
-- %%	Print a literal '%' character
-- %d	Print an integer in decimal notation
-- %i	Print an integer in decimal notation (the same as %d)
+-%%	Print a literal '%' character
+
+-%d	Print an integer in decimal notation
+
+-%i	Print an integer in decimal notation (the same as %d)
+.RS
+
 The following conversion specifiers are not handled by _printf():
-
----
-
-### **Return Value**:
-
 Upon successful return, these functions return the number of characters printed (including the null byte used to end output to strings as well as a new line).
-
-___
-
-#### **Authors:**
+.SH BUGS
+No known bugs.
+.SH AUTHOR'S
+.RE
 Mark Tipton  https://github.com/marktipton
 
 Kier McAlister  https://github.com/kier-ious
+.RS
