@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 /**
  * spec_char - prints character
  *
@@ -12,8 +13,8 @@ int spec_char(va_list args)
 {
 	int c = va_arg(args, int);
 					
-	_putchar(c);	/*
-	return (1);
+	_putchar(c);	/*print the character*/
+	return (1);	/*return 1 since 1 character was printed*/
 }
 /**
  * spec_string - prints string
@@ -30,21 +31,23 @@ int spec_string(va_list args)
 	s = va_arg(args, char *);
 	if (s != NULL)
 	{
-	string_count = 0;
-	for (j = 0; s[j]; j++)
-	{
-		string_count += _putchar(s[j]);
+		string_count = 0;
+		for (j = 0; s[j]; j++)	/*iterate through string until '\0' is*/
+		{			  /*reached*/
+		
+			string_count += _putchar(s[j]);	/*print and count chars*/
+		}
+		
+		return (string_count);	/*return number of chars printed*/
 	}
-	return (string_count);
-	}
-		_putchar('(');
+		_putchar('(');	/*if the string is null then print '(null)'*/
 		_putchar('n');
 		_putchar('u');
 		_putchar('l');
 		_putchar('l');
 		_putchar(')');
 
-	return (6);
+	return (6);	/*Return 6, the number of characters in '(null)'*/
 }
 /**
  * spec_dec - prints integer
@@ -61,9 +64,19 @@ int spec_dec(va_list args)
 	d = va_arg(args, int);	/*Set d equal to variable argument input*/
 	count = 0, i = 10;
 
-	if (d < 0)	/*If number is negative then print a '%' and flip*/
-	{			/*the sign of the number so that it can be*/
-		_putchar('-');	/*printed normally*/
+	if (d == INT_MIN)	/*If d is INT_MIN then print the '-' sign and*/
+	{			/*'2', the first digit of int min.*/
+		_putchar('-');
+		_putchar('2');
+
+		d = d % 2000000000;	/*Then take remove the '-' and '2' off*/
+		d = -d;			/*of d by dividing by 2 billion and*/
+		count += 2;	/*flipping the sign. The count printed chars*/
+	}
+
+	if (d < 0)		/*If number is negative then print a '%' and flip*/
+	{			/*the sign of the number*/ 
+		_putchar('-');   
 		count++;
 		d = -d;
 	}
@@ -71,15 +84,17 @@ int spec_dec(va_list args)
 	{			/*is by multiplying i by 10 until d*/
 		i = i * 10;	/*divided by i is less than 10*/
 	}
-	while (i > 0)
-	{				
+	while (i > 0)	/*Print d one digit at a time by iterating by orders*/
+	{				/*of 10*/
+
 		if (d < 10)	/*If d is less than 10 then print d, add*/
 		{		/*one to the count and return count*/
 			count += _putchar(d + '0');
 			return (count);
-		}		
-			/*Otherwise,	
-		count += _putchar(((d / i) % 10) + '0');
+		}
+	/*Count and print each digit by isolating one at a time, starting with first*/
+		/*and ending with last*/
+		count += _putchar(((d / i) % 10) + '0');	
 		i = i / 10;
 	}
 	return (count);
