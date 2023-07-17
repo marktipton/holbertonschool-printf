@@ -8,7 +8,7 @@
 /**
  * struct spec - Struct used to group specifiers and specifier functions
  *
- * @spec: specifier
+ * @spec: specifier for _printf function
  * @f: The function associated with that specifier
  */
 typedef struct spec
